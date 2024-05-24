@@ -1,23 +1,24 @@
 from crewai import Crew
 from textwrap import dedent
-from agents import TravelAgents
-from tasks import TravelTasks
+from agents import RoadmapAgents
+from tasks import RoadmapTasks
 
 from dotenv import load_dotenv
 load_dotenv()
 
 
-class TripCrew:
+class RoadmapCrew:
     def __init__(self, origin, cities, date_range, interests):
         self.origin = origin
         self.cities = cities
         self.date_range = date_range
         self.interests = interests
 
+
     def run(self):
         # Define your custom agents and tasks in agents.py and tasks.py
-        agents = TravelAgents()
-        tasks = TravelTasks()
+        agents = RoadmapAgents()
+        tasks = RoadmapTasks()
 
         # Define your custom agents and tasks here
         expert_travel_agent = agents.expert_travel_agent()
@@ -86,7 +87,7 @@ if __name__ == "__main__":
       What are some of your high level interests and hobbies?
     """))
 
-    trip_crew = TripCrew(origin, cities, date_range, interests)
+    trip_crew = RoadmapCrew(origin, cities, date_range, interests)
     result = trip_crew.run()
     print("\n\n########################")
     print("## Here is you Trip Plan")
