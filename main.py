@@ -66,10 +66,22 @@ class RoadmapCrew:
         return result
 
 
-# This is the main function that you will use to run your custom crew.
+
 if __name__ == "__main__":
+
+    """
+    # This is the main function that you will use to run your custom crew.
+    # To run your crew, you can use the following commands:
+    # 1. poetry shell
+    # 2. python main.py
+    #
+    # 3. Or you can use the following command to run the crew directly:
+    #    poetry run python main.py
+    """
     print("## Welcome to Trip Planner Crew")
     print('-------------------------------')
+
+    '''
     origin = input(
         dedent("""
       From where will you be traveling from?
@@ -86,7 +98,12 @@ if __name__ == "__main__":
         dedent("""
       What are some of your high level interests and hobbies?
     """))
+    '''
 
+    origin = "Big Island, Hawaii"
+    cities = ["Honolulu"]
+    date_range = ["2024-12-01", "2024-12-10"]
+    interests = ["Hiking", "Beach", "Cultural"]
     trip_crew = RoadmapCrew(origin, cities, date_range, interests)
     result = trip_crew.run()
     print("\n\n########################")
