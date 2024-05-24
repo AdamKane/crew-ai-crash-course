@@ -6,13 +6,22 @@ from tasks import RoadmapTasks
 from dotenv import load_dotenv
 load_dotenv()
 
+'''
+
+    client_name = "Big Island, Hawaii"
+    requirements = ["Honolulu"]
+    date_range = ["2024-12-01", "2024-12-10"]
+    motivations = ["Hiking", "Beach", "Cultural"]
+    roadmap_crew = RoadmapCrew(client_name, requirements, date_range, motivations)
+'''
+
 
 class RoadmapCrew:
-    def __init__(self, origin, cities, date_range, interests):
-        self.origin = origin
-        self.cities = cities
+    def __init__(self, client_name, requirements, date_range, motivations):
+        self.client_name = client_name
+        self.requirements = requirements
         self.date_range = date_range
-        self.interests = interests
+        self.motivations = motivations
 
 
     def run(self):
@@ -28,24 +37,24 @@ class RoadmapCrew:
         # Custom tasks include agent name and variables as input
         plan_itinerary = tasks.plan_itinerary(
             expert_travel_agent,
-            self.cities,
+            self.requirements,
             self.date_range,
-            self.interests
+            self.motivations
         )
 
         identify_city = tasks.identify_city(
             city_selection_expert,
-            self.origin,
-            self.cities,
-            self.interests,
+            self.client_name,
+            self.requirements,
+            self.motivations,
             self.date_range
         )
 
         gather_city_info = tasks.gather_city_info(
             local_tour_guide,
-            self.cities,
+            self.requirements,
             self.date_range,
-            self.interests
+            self.motivations
         )
 
         # Define your custom crew here
@@ -100,13 +109,13 @@ if __name__ == "__main__":
     """))
     '''
 
-    origin = "Big Island, Hawaii"
-    cities = ["Honolulu"]
+    client_name = "Big Island, Hawaii"
+    requirements = ["Honolulu"]
     date_range = ["2024-12-01", "2024-12-10"]
-    interests = ["Hiking", "Beach", "Cultural"]
-    trip_crew = RoadmapCrew(origin, cities, date_range, interests)
-    result = trip_crew.run()
+    motivations = ["Hiking", "Beach", "Cultural"]
+    roadmap_crew = RoadmapCrew(client_name, requirements, date_range, motivations)
+    result = roadmap_crew.run()
     print("\n\n########################")
-    print("## Here is you Trip Plan")
+    print("## Here is you Roadmap")
     print("########################\n")
     print(result)
